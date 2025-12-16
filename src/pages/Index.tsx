@@ -31,10 +31,12 @@ const Index = () => {
     isPlaying,
     gameCompleted,
     currentSection,
+    ghosts,
     move,
     startGame,
     resetGame,
     closeSection,
+    openSection,
     maze,
     gridSize,
     powerPelletPositions,
@@ -48,7 +50,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4">
       {/* Game UI */}
-      <GameUI score={score} powerPelletsCollected={powerPelletsCollected} />
+      <GameUI 
+        score={score} 
+        powerPelletsCollected={powerPelletsCollected} 
+        onOpenSection={openSection}
+      />
 
       {/* Game Maze */}
       <GameMaze
@@ -59,14 +65,15 @@ const Index = () => {
         pelletsCollected={pelletsCollected}
         powerPelletsCollected={powerPelletsCollected}
         powerPelletPositions={powerPelletPositions}
+        ghosts={ghosts}
       />
 
       {/* Mobile Controls */}
       <MobileControls onMove={move} />
 
       {/* Instructions */}
-      <p className="mt-4 text-gray-500 text-sm text-center">
-        Collect the glowing power pellets to unlock portfolio sections!
+      <p className="mt-4 text-gray-500 text-xs text-center max-w-xs">
+        Collect glowing power pellets in corners to unlock sections, or click buttons above!
       </p>
 
       {/* Section Modals */}
