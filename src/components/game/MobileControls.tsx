@@ -48,14 +48,14 @@ export const MobileControls = ({ onMove }: MobileControlsProps) => {
 
   const buttonClass = cn(
     "w-14 h-14 rounded-xl flex items-center justify-center",
-    "bg-blue-600/80 hover:bg-blue-500 active:bg-blue-400",
-    "text-white shadow-lg active:scale-95 transition-all",
-    "border-2 border-blue-400/50"
+    "glass-button",
+    "text-foreground shadow-lg active:scale-95 transition-all",
+    "hover:bg-secondary/20 active:bg-secondary/30"
   );
 
   return (
     <div className="md:hidden mt-6 select-none">
-      <p className="text-center text-gray-500 text-xs mb-3">Tap buttons or swipe to move</p>
+      <p className="text-center text-muted-foreground text-xs mb-3">Tap buttons or swipe to move</p>
       <div className="grid grid-cols-3 gap-2 w-fit mx-auto">
         {/* Top row - Up button */}
         <div />

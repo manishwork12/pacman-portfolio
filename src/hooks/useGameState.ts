@@ -372,6 +372,17 @@ export const useGameState = () => {
   // Keyboard controls
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Skip game controls if user is typing in an input field
+      const target = e.target as HTMLElement;
+      const isTyping = target.tagName === 'INPUT' || 
+                       target.tagName === 'TEXTAREA' || 
+                       target.tagName === 'SELECT' ||
+                       target.isContentEditable;
+      
+      if (isTyping) {
+        return; // Allow normal typing in form fields
+      }
+
       switch (e.key) {
         case 'ArrowUp':
         case 'w':

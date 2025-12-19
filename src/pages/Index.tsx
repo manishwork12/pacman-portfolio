@@ -48,7 +48,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       {/* Game UI */}
       <GameUI 
         score={score} 
@@ -72,7 +72,7 @@ const Index = () => {
       <MobileControls onMove={move} />
 
       {/* Instructions */}
-      <p className="mt-4 text-gray-500 text-xs text-center max-w-xs">
+      <p className="mt-4 text-muted-foreground text-xs text-center max-w-xs">
         Collect glowing power pellets in corners to unlock sections, or click buttons above!
       </p>
 
