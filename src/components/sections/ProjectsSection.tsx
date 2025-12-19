@@ -10,13 +10,13 @@ const projects = [
     name: 'Trackon',
     description: 'DevOps project featuring CI/CD pipelines, infrastructure as code, and automated deployments.',
     tech: ['Docker', 'Kubernetes', 'Jenkins', 'Terraform'],
-    color: 'bg-red-500',
+    color: 'bg-destructive',
   },
   {
     name: 'Management Portal',
     description: 'Full-stack web application for resource management with role-based access control.',
     tech: ['React', 'Node.js', 'PostgreSQL', 'JWT'],
-    color: 'bg-cyan-400',
+    color: 'bg-accent',
   },
   {
     name: 'Heart Health Predictor',
@@ -34,12 +34,12 @@ const projects = [
 
 export const ProjectsSection = ({ onClose }: ProjectsSectionProps) => {
   return (
-    <div className="fixed inset-0 bg-gray-900/95 z-50 flex items-center justify-center p-4 animate-fade-in">
-      <div className="bg-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-auto border-4 border-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-        <div className="sticky top-0 bg-gray-800 p-4 border-b border-gray-700 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-cyan-400">🚀 Projects</h2>
+    <div className="fixed inset-0 glass-overlay z-50 flex items-center justify-center p-4 animate-fade-in">
+      <div className="glass-card max-w-3xl w-full max-h-[90vh] overflow-auto border-4 border-accent shadow-[0_0_30px_hsl(var(--accent)/0.3)]">
+        <div className="sticky top-0 glass p-4 border-b border-border/30 flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-accent">🚀 Projects</h2>
           <Button variant="ghost" size="icon" onClick={onClose}>
-            <X className="w-6 h-6 text-gray-400" />
+            <X className="w-6 h-6 text-muted-foreground" />
           </Button>
         </div>
         
@@ -47,7 +47,7 @@ export const ProjectsSection = ({ onClose }: ProjectsSectionProps) => {
           {projects.map((project, idx) => (
             <div
               key={project.name}
-              className="bg-gray-700/50 rounded-xl p-4 border border-gray-600 hover:border-cyan-400/50 transition-all hover:scale-[1.02] animate-fade-in"
+              className="glass-panel p-4 border border-border/30 hover:border-accent/50 transition-all hover:scale-[1.02] animate-fade-in"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
               <div className="flex items-start justify-between mb-3">
@@ -55,21 +55,21 @@ export const ProjectsSection = ({ onClose }: ProjectsSectionProps) => {
                   🎮
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <Github className="w-4 h-4 text-gray-400 hover:text-white" />
+                  <Button variant="ghost" size="icon" className="h-8 w-8 glass-button">
+                    <Github className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <ExternalLink className="w-4 h-4 text-gray-400 hover:text-white" />
+                  <Button variant="ghost" size="icon" className="h-8 w-8 glass-button">
+                    <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-foreground" />
                   </Button>
                 </div>
               </div>
               
-              <h3 className="text-lg font-bold text-white mb-2">{project.name}</h3>
-              <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+              <h3 className="text-lg font-bold text-foreground mb-2">{project.name}</h3>
+              <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
               
               <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((t) => (
-                  <span key={t} className="text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded">
+                  <span key={t} className="text-xs px-2 py-1 glass-button rounded text-foreground/80">
                     {t}
                   </span>
                 ))}

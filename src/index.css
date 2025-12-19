@@ -6,34 +6,41 @@
 
 @layer base {
   :root {
-    --background: 220 20% 10%;
-    --foreground: 60 9% 98%;
-    --card: 220 20% 14%;
-    --card-foreground: 60 9% 98%;
-    --popover: 220 20% 14%;
-    --popover-foreground: 60 9% 98%;
-    --primary: 48 96% 53%;
+    /* Light mode - bright arcade theme */
+    --background: 220 20% 96%;
+    --foreground: 220 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+    --primary: 48 96% 45%;
     --primary-foreground: 220 20% 10%;
-    --secondary: 217 91% 60%;
-    --secondary-foreground: 60 9% 98%;
-    --muted: 220 14% 20%;
-    --muted-foreground: 220 9% 60%;
-    --accent: 187 92% 57%;
+    --secondary: 217 91% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 14% 90%;
+    --muted-foreground: 220 9% 40%;
+    --accent: 187 92% 45%;
     --accent-foreground: 220 20% 10%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 60 9% 98%;
-    --border: 220 14% 25%;
-    --input: 220 14% 25%;
-    --ring: 48 96% 53%;
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 85%;
+    --input: 220 14% 85%;
+    --ring: 48 96% 45%;
     --radius: 0.75rem;
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 60 9% 98%;
-    --sidebar-primary: 48 96% 53%;
+    
+    /* Glass variables - light mode */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.5;
+    --glass-shadow: 220 20% 10% / 0.1;
+    
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 15%;
+    --sidebar-primary: 48 96% 45%;
     --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 220 14% 20%;
-    --sidebar-accent-foreground: 60 9% 98%;
-    --sidebar-border: 220 14% 25%;
-    --sidebar-ring: 48 96% 53%;
+    --sidebar-accent: 220 14% 95%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 220 14% 85%;
+    --sidebar-ring: 48 96% 45%;
   }
 
   .dark {
@@ -56,6 +63,12 @@
     --border: 220 14% 25%;
     --input: 220 14% 25%;
     --ring: 48 96% 53%;
+    
+    /* Glass variables - dark mode */
+    --glass-bg: 220 20% 14% / 0.6;
+    --glass-border: 220 14% 40% / 0.3;
+    --glass-shadow: 0 0% 0% / 0.3;
+    
     --sidebar-background: 220 20% 10%;
     --sidebar-foreground: 60 9% 98%;
     --sidebar-primary: 48 96% 53%;
@@ -78,6 +91,30 @@
   }
 }
 
+/* Glassmorphism utility classes */
+@layer components {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/30 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-md border border-border/40 rounded-2xl shadow-xl;
+  }
+
+  .glass-button {
+    @apply bg-card/50 backdrop-blur-sm border border-border/30 
+           hover:bg-card/70 transition-all duration-200;
+  }
+
+  .glass-panel {
+    @apply bg-card/40 backdrop-blur-lg border border-border/20 rounded-xl;
+  }
+
+  .glass-overlay {
+    @apply bg-background/80 backdrop-blur-xl;
+  }
+}
+
 /* Pac-Man chomp animation */
 @keyframes chomp {
   0%, 100% {
@@ -88,20 +125,34 @@
   }
 }
 
+/* Glow animation for primary elements */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
 /* Custom scrollbar for modals */
 .overflow-auto::-webkit-scrollbar {
   width: 8px;
 }
 
 .overflow-auto::-webkit-scrollbar-track {
-  background: hsl(220 20% 14%);
+  background: hsl(var(--card));
 }
 
 .overflow-auto::-webkit-scrollbar-thumb {
-  background: hsl(220 14% 25%);
+  background: hsl(var(--border));
   border-radius: 4px;
 }
 
 .overflow-auto::-webkit-scrollbar-thumb:hover {
-  background: hsl(220 14% 35%);
+  background: hsl(var(--muted-foreground));
 }
